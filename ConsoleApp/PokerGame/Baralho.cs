@@ -2,27 +2,35 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class Baralho
+namespace ConsoleApp
 {
-    public Baralho()
+    public class Baralho
     {
-        this.CriarBaralho();
-    }
+        public Baralho()
+        {
+            this.CriarBaralho();
+        }
 
-    public List<Carta> Cartas{get; set;}
+        public List<Carta> Cartas { get; set; }
 
-    private void CriarBaralho()
-    {
-        Cartas = new List<Carta>();
+        private void CriarBaralho()
+        {
+            Cartas = new List<Carta>();
+            var naipes = Enum.GetValues(typeof(Naipe)).Cast<Naipe>();
+            var valores = Enum.GetValues(typeof(Valor)).Cast<Valor>();
 
-        foreach(var naipe in Enum.GetValues(typeof(Naipe)).Cast<Naipe>()){
-            foreach(var valor in Enum.GetValues(typeof(Valor)).Cast<Valor>()){
-                var carta = new Carta(){
-                    Valor = valor,
-                    Naipe = naipe
-                };
+            foreach (var naipe in naipes)
+            {
+                foreach (var valor in valores)
+                {
+                    var carta = new Carta()
+                    {
+                        Valor = valor,
+                        Naipe = naipe
+                    };
 
-                Cartas.Add(carta);
+                    Cartas.Add(carta);
+                }
             }
         }
     }

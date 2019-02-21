@@ -6,7 +6,10 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine("Hello World!");
+            var baralho = new Baralho();
+
+            
+            Console.WriteLine("Hello World!");
         }
     }
 }

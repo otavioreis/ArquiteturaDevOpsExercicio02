@@ -1,3 +1,8 @@
-public interface IPokerGame
+
+namespace ConsoleApp
 {
+    public interface IPokerGame
+    {
+    }
+
 }
