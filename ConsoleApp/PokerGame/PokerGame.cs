@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace ConsoleApp
 {
     public class PokerGame : IPokerGame
@@ -9,18 +11,12 @@ namespace ConsoleApp
 
         }
 
-        public List<Carta> MaoJogadorUm { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<Carta> MaoJogadorDois { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<Carta> MaoJogadorUm { get; set; }
+        public List<Carta> MaoJogadorDois { get; set; }
 
-        public bool IsCartaAlta(List<Carta> maoJogador)
-        {
-            throw new NotImplementedException();
-        }
 
-        public bool IsDoisPares(List<Carta> maoJogador)
-        {
-            throw new NotImplementedException();
-        }
+
+
 
         public bool IsFlush(List<Carta> maoJogador)
         {
@@ -54,17 +50,82 @@ namespace ConsoleApp
 
         public bool IsTrinca(List<Carta> maoJogador)
         {
-            throw new NotImplementedException();
-        }
+            bool isTrinca = false;
 
+            for (int i = 0; i < maoJogador.Count; i++)
+            {
+                for (int j = i + 1; j < maoJogador.Count; j++)
+                {
+                    for (int k = j + 1; k < maoJogador.Count; k++)
+                    {
+                        if (maoJogador[i].Valor == maoJogador[j].Valor &&
+                            maoJogador[i].Valor == maoJogador[k].Valor)
+                        {
+                            isTrinca = true;
+                        }
+                    }
+                }
+            }
+
+            return isTrinca;
+        }
+        public bool IsDoisPares(List<Carta> maoJogador)
+        {
+            int numeroPares = 0;
+            for (int i = 0; i < maoJogador.Count; i++)
+            {
+                for (int j = i + 1; j < maoJogador.Count; j++)
+                {
+                    if (maoJogador[i].Valor == maoJogador[j].Valor)
+                    {
+                        numeroPares++;
+                    }
+                }
+            }
+
+            if (numeroPares == 2)
+                return true;
+
+            return false;
+        }
         public bool IsUmPar(List<Carta> maoJogador)
         {
-            throw new NotImplementedException();
+            int numeroPares = 0;
+            for (int i = 0; i < maoJogador.Count; i++)
+            {
+                for (int j = i + 1; j < maoJogador.Count; j++)
+                {
+                    if (maoJogador[i].Valor == maoJogador[j].Valor)
+                    {
+                        numeroPares++;
+                    }
+                }
+            }
+
+            if (numeroPares == 1)
+                return true;
+
+            return false;
         }
 
         public string Jogar()
         {
-            throw new NotImplementedException();
+            var baralho = new Baralho();
+
+            Random r = new Random();
+            List<Carta> maosJogadores = baralho.Cartas.OrderBy(x => r.Next()).Take(10).ToList();
+
+            MaoJogadorUm = maosJogadores.Take(5).ToList();
+            MaoJogadorDois = maosJogadores.Skip(5).Take(5).ToList();
+            Console.WriteLine("isUmPar: " + IsUmPar(MaoJogadorUm));
+            Console.WriteLine("isDoisPares: " + IsDoisPares(MaoJogadorUm));
+            Console.WriteLine("IsTrinca: " + IsTrinca(MaoJogadorUm));
+            Console.WriteLine("----------");
+            Console.WriteLine("isUmPar: " + IsUmPar(MaoJogadorDois));
+            Console.WriteLine("isDoisPares: " + IsDoisPares(MaoJogadorDois));
+            Console.WriteLine("IsTrinca: " + IsTrinca(MaoJogadorDois));
+
+            return "";
         }
 
         public PesoMao PesoMaoJogador(List<Carta> maoJogador)

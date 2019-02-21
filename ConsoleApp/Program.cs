@@ -6,9 +6,9 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            var baralho = new Baralho();
+            IPokerGame pokerGame = new PokerGame();
 
-            
+            pokerGame.Jogar();
             Console.WriteLine("Hello World!");
         }
     }

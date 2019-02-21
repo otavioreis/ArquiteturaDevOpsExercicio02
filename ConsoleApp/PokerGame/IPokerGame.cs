@@ -8,7 +8,7 @@ namespace ConsoleApp
     {
         List<Carta> MaoJogadorUm { get; set; }
         List<Carta> MaoJogadorDois { get; set; }
-        
+
         bool IsRoyalFlush(List<Carta> maoJogador);
         bool IsStraightFlush(List<Carta> maoJogador);
         bool IsQuadra(List<Carta> maoJogador);
@@ -18,7 +18,6 @@ namespace ConsoleApp
         bool IsTrinca(List<Carta> maoJogador);
         bool IsDoisPares(List<Carta> maoJogador);
         bool IsUmPar(List<Carta> maoJogador);
-        bool IsCartaAlta(List<Carta> maoJogador);
 
         PesoMao PesoMaoJogador(List<Carta> maoJogador);
 
