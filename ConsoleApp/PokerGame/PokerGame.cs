@@ -143,6 +143,7 @@ namespace ConsoleApp
 
             MaoJogadorUm = maosJogadores.Take(5).ToList();
             MaoJogadorDois = maosJogadores.Skip(5).Take(5).ToList();
+            IsRoyalFlush(MaoJogadorUm);
             Console.WriteLine("isUmPar: " + IsUmPar(MaoJogadorUm));
             Console.WriteLine("isDoisPares: " + IsDoisPares(MaoJogadorUm));
             Console.WriteLine("IsTrinca: " + IsTrinca(MaoJogadorUm));

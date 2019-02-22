@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ConsoleApp;
 using Xunit;
 
-namespace ConsoleTest
+namespace ConsoleTests
 {
    
     public class Teste
@@ -33,7 +33,7 @@ namespace ConsoleTest
                 new Carta {Valor = c4, Naipe = Naipe.Espadas},
                 new Carta {Valor = c5, Naipe = Naipe.Espadas},
             };
-            Assert.True(_game.IsFlush(maoJogador));
+            Assert.True(_game.IsRoyalFlush(maoJogador));
         }
 
         [Theory]
