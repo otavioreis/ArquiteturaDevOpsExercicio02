@@ -27,11 +27,11 @@ namespace ConsoleTests
         [InlineData(Valor.As, Valor.Rei, Valor.Dama, Valor.Valete, Valor.Dez, Naipe.Paus)]
         public void Testa_IsRoyalFlush(Valor c1, Valor c2, Valor c3, Valor c4, Valor c5, Naipe n) {
             var maoJogador = new List<Carta> {
-                new Carta {Valor = c1, Naipe = Naipe.Espadas},
-                new Carta {Valor = c2, Naipe = Naipe.Espadas},
-                new Carta {Valor = c3, Naipe = Naipe.Espadas},
-                new Carta {Valor = c4, Naipe = Naipe.Espadas},
-                new Carta {Valor = c5, Naipe = Naipe.Espadas},
+                new Carta {Valor = c1, Naipe = n},
+                new Carta {Valor = c2, Naipe = n},
+                new Carta {Valor = c3, Naipe = n},
+                new Carta {Valor = c4, Naipe = n},
+                new Carta {Valor = c5, Naipe = n},
             };
             Assert.True(_game.IsRoyalFlush(maoJogador));
         }
