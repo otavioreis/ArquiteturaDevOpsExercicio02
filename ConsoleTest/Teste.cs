@@ -20,7 +20,7 @@ namespace ConsoleTest
             Assert.Equal(52, baralho.Cartas.Count);
         }
 
-        [Fact]
+        [Theory]
         [InlineData(Valor.As, Valor.Rei, Valor.Dama, Valor.Valete, Valor.Dez, Naipe.Espadas)]
         [InlineData(Valor.As, Valor.Rei, Valor.Dama, Valor.Valete, Valor.Dez, Naipe.Copas)]
         [InlineData(Valor.As, Valor.Rei, Valor.Dama, Valor.Valete, Valor.Dez, Naipe.Ouro)]
@@ -36,7 +36,7 @@ namespace ConsoleTest
             Assert.True(_game.IsFlush(maoJogador));
         }
 
-        [Fact]
+        [Theory]
         [InlineData(Valor.Nove, Valor.Oito, Valor.Sete, Valor.Seis, Valor.Cinco)]
         public void Testa_IsStraightFlush(Valor c1, Valor c2, Valor c3, Valor c4, Valor c5) {
             var maoJogador = new List<Carta> {
@@ -65,13 +65,29 @@ namespace ConsoleTest
         public void Testa_IsStraight() {
             throw new NotImplementedException();
         }
-        [Fact]
-        public void Testa_IsTrinca() {
-            throw new NotImplementedException();
+        [Theory]
+        [InlineData(Valor.Oito, Valor.Oito, Valor.Sete, Valor.Seis, Valor.Oito)]
+        public void Testa_IsTrinca(Valor c1, Valor c2, Valor c3, Valor c4, Valor c5) {
+                var maoJogador = new List<Carta> {
+                new Carta {Valor = c1, Naipe = Naipe.Espadas},
+                new Carta {Valor = c2, Naipe = Naipe.Copas},
+                new Carta {Valor = c3, Naipe = Naipe.Espadas},
+                new Carta {Valor = c4, Naipe = Naipe.Paus},
+                new Carta {Valor = c5, Naipe = Naipe.Ouro},
+            };
+            Assert.True(_game.IsTrinca(maoJogador));
         }
-        [Fact]
-        public void Testa_IsDoisPares() {
-            throw new NotImplementedException();
+        [Theory]
+        [InlineData(Valor.Oito, Valor.Sete, Valor.Sete, Valor.Seis, Valor.Oito)]
+        public void Testa_IsDoisPares(Valor c1, Valor c2, Valor c3, Valor c4, Valor c5) {
+             var maoJogador = new List<Carta> {
+                new Carta {Valor = c1, Naipe = Naipe.Espadas},
+                new Carta {Valor = c2, Naipe = Naipe.Copas},
+                new Carta {Valor = c3, Naipe = Naipe.Espadas},
+                new Carta {Valor = c4, Naipe = Naipe.Paus},
+                new Carta {Valor = c5, Naipe = Naipe.Ouro},
+            };
+            Assert.True(_game.IsDoisPares(maoJogador));
         }
 
         [Fact]
